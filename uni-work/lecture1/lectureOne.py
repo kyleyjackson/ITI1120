@@ -1,6 +1,7 @@
 y = 0
 str = 'hello world'
 str1 = 'h'
+arr = [2, 3]
 #*objects and classes
 x = 3 #integer
 #an integer object can have any numerical value
@@ -13,7 +14,7 @@ x = 'three' #string
 #a string is a sequence of characters enclosed within quotations
 
 x = [3, 3, 3] #list
-
+#a list is a comma-separated sequence of ints, floats, strings, and more enclosed within square brackets
 
 #*arithmetic operators
 #python follows bedmas
@@ -73,3 +74,26 @@ str.upper() #returns an all-uppercase copy of str
 str.replace(str, str1) #returns copy of str with every str replaced with str1
 str.split(y) #returns list of substrings of str, delimited by y
 str.strip() #returns str without leading or trailing whitespace
+
+
+#*indexing
+#in strings and lists, each character/entry has a value starting from 0 and increasing by 1 per character/entry
+
+
+#*negative indexing
+#similar to indexing, but starts from the end of the string/last with a starting value of -1
+
+
+#*list operators
+y in x #returns true if y is an item in x
+y not in x #returns true if y is not an item in x
+x + arr #concatenates x and arr
+y * x #concatenates x to itself y number of times
+x[y] #item at index y of list x
+len(x) #returns the number of items in x
+min(x) #returns the minimum item in x
+max(x) #returns the maximum item in x
+sum(x) #returns the sum of all items in x
+
+
+#*list methods
