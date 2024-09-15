@@ -18,8 +18,10 @@ def mh2kh(s):
     Returns the input speed in km/h
     '''
 
-    print(1.609344 * s)
+    # print(1.609344 * s)  # for vscode testing
     return 1.609344 * s
+
+# mh2kh(10)
 
 ####################
 # Question Two
@@ -33,12 +35,11 @@ def pythagorean_pair(a, b):
 
     c = math.sqrt((a ** 2 + b ** 2))
 
-    if (round(c, 0) == c):
-        print(round(c, 0) == c)
-        return True
-    else:
-        print(round(c, 0) == c)
-        return False
+    # print(round(c, 0) == c) # vscode testing
+    return round(c, 0) == c
+
+# pythagorean_pair(-300, 400)
+# pythagorean_pair(2, 2)
 
 ####################
 # Question Three
@@ -50,9 +51,6 @@ def in_out(xs, ys, side):
     Returns True if the query point is inside of the boundaries of the specified square
     Precondition: side must be non-negative
     '''
-    if (side < 0):
-        print('Side length must be non-negative!')
-        return
     
     xInput = input("Enter the x coordinate of the query point: ")
     xc = float(xInput)
@@ -60,13 +58,10 @@ def in_out(xs, ys, side):
     yInput = input("Enter the y coordinate of the query point: ")
     yc = float(yInput)
 
-    
-    if ((xc >= xs and xc <= xs *+side) and (yc >= ys and yc <= ys + side)):
-        print((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side))
-        return True
-    else:
-        print((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side))
-        return False
+    # print((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side))  # for vscode testing
+    return((xc >= xs and xc <= xs *+side) and (yc >= ys and yc <= ys + side))
+
+# in_out(0, 0, 2.5)
 
 ####################
 # Question Four
@@ -81,16 +76,13 @@ def safe(n):
 
     nStr = str(n)
 
-    if (n < 0):
-        print('n must be non-negative!')
-        return
-    elif('9' in nStr or n % 9 == 0):
-        print(not('9' in nStr or n % 9 == 0))
-        return False
-    else:
-        print(not('9' in nStr or n % 9 == 0))
-        return True
-    
+    # print(not('9' in nStr or n % 9 == 0)) # for vscode testing
+    return ('9' in nStr or n % 9 == 0)
+
+# safe(81)
+# safe(97)
+# safe(1000)
+
 ####################
 # Question Five
 ####################
@@ -105,6 +97,8 @@ def quote_maker(quote, name, year):
 
     print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
     return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
+
+# quote_maker('hello', 'someone', 2000)
 
 ####################
 # Question Six
@@ -122,3 +116,301 @@ def quote_displayer():
 
     print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
     return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
+
+# quote_displayer()
+
+####################
+# Question Seven
+####################
+def rps_winner():
+    '''
+    () -> None
+
+    Prints the result of p1 in a rock paper scissors game between p1 and p2 after given inputs
+    '''
+
+    p1 = input('Player 1\'s move (rock, paper, scissors): ')
+    p2 = input('Player 2\'s move (rock, paper, scissors): ')
+
+    print('Player 1 wins, this is ' + str(((p1 == 'rock' and p2 == 'scissors') or (p1 == 'paper' and p2 == 'rock') or (p1 == 'scissors' and p2 == 'paper'))))
+
+# rps_winner()
+        
+####################
+# Question Eight
+####################
+def fun(x):
+    '''
+    (number) -> number
+
+    Returns the answer y for the expression 10^(4y) = x + 3 
+    '''
+
+    y = (math.log(x + 3)) / (4 * math.log(10)) # math.log() acts as ln unless base is specified
+
+    # print(y) # vscode testing
+    return y
+
+# fun(20)
+
+####################
+# Question Nine
+####################
+def ascii_name_plaque(name):
+    '''
+    (string) -> none
+
+    Prints an ascii plaque with the inputted name in the middle
+    '''
+
+    nLen = len(name) #length of inputted name
+    b = '*' # border
+    s = ' ' # empty spaces
+
+    #printing the plaque
+    print(b * (nLen + 10))
+    print(b + s * (nLen + 8) + b)
+    print(b + '  __' + name + '__  ' + b)
+    print(b + s * (nLen + 8) + b)
+    print(b * (nLen + 10))
+
+# ascii_name_plaque('kyle j')
+
+####################
+# Question Ten
+####################
+def draw_court():
+    '''
+    () -> none
+
+    Draws a basketball court using turtle graphics
+    '''
+    # screen and cursor
+    t = turtle.Turtle()
+    s = turtle.Screen()
+
+    # setting colors
+    s.bgcolor('#F4D48D')
+    t.pencolor('white')
+    t.pensize(3)
+    t.hideturtle()
+    t.speed(10)
+
+    # center circle
+    t.penup()
+    t.fillcolor('#E48B50')
+    t.goto(0, -50)
+    t.pendown()
+    t.begin_fill()
+    t.circle(50)
+    t.penup()
+    t.end_fill()
+
+    # half court line
+    t.goto(0, -175)
+    t.left(90)
+    t.pendown()
+    t.forward(350)
+    t.penup()
+
+    # left key
+    t.goto(-350, 45)
+    t.right(90)
+    t.pendown()
+    t.begin_fill()
+    t.forward(125)
+    t.right(90)
+    t.forward(90)
+    t.right(90)
+    t.forward(125)
+    t.end_fill()
+    t.penup()
+
+    # right outer key
+    t.goto(350, -55)
+    t.pendown()
+    t.forward(125)
+    t.right(90)
+    t.forward(110)
+    t.right(90)
+    t.forward(125)
+    t.penup()
+
+    # right key
+    t.goto(350, -45)
+    t.right(180)
+    t.pendown()
+    t.begin_fill() 
+    t.forward(125)
+    t.right(90)
+    t.forward(90)
+    t.right(90)
+    t.forward(125)
+    t.end_fill()
+    t.penup()
+    
+    # left outer-key
+    t.goto(-350, 55)
+    t.pendown()
+    t.forward(125)
+    t.right(90)
+    t.forward(110)
+    t.right(90)
+    t.forward(125)
+    t.penup()
+
+    # out of bounds lines
+    t.goto(-350, 175)
+    t.right(180)
+    t.pendown()
+    t.forward(700)
+    t.right(90)
+    t.forward(350)
+    t.right(90)
+    t.forward(700)
+    t.right(90)
+    t.forward(350)
+    t.penup()
+
+    # left 3-point line
+    t.goto(-350, -135)
+    t.right(90)
+    t.pendown()
+    t.forward(45)
+    t.circle(135, 180)
+    t.forward(45)
+    t.penup()
+
+    # right 3-point line
+    t.goto(350, 135)
+    t.pendown()
+    t.forward(45)
+    t.circle(135, 180)
+    t.forward(45)
+    t.penup()
+
+    # left key circle solid half
+    t.goto(-225, -55)
+    t.pendown()
+    t.circle(55, 180)
+
+    # left key circle dotted half
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+
+    # right key circle dotted half
+    t.goto(220, -55)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+    t.pendown()
+    t.circle(55, 12.5)
+    t.penup()
+    t.circle(55, 12.5)
+
+    # right key circle solid half
+    t.pendown()
+    t.circle(55, 190)
+    t.penup()
+
+    # left back board
+    t.goto(-330, -25)
+    t.left(90)
+    t.pendown()
+    t.forward(50)
+    t.penup()
+
+    # left rim
+    t.goto(-330, 0)
+    t.right(90)
+    t.pendown()
+    t.forward(10)
+    t.right(90)
+    t.color('#FFFFFF')
+    t.begin_fill()
+    t.circle(5)
+    t.end_fill()
+    t.penup()
+
+    # right back board
+    t.goto(330, 25)
+    t.pendown()
+    t.forward(50)
+    t.penup()
+
+    # right rim
+    t.goto(330, 0)
+    t.right(90)
+    t.pendown()
+    t.forward(10)
+    t.right(90)
+    t.color('#FFFFFF')
+    t.begin_fill()
+    t.circle(5)
+    t.end_fill()
+    t.penup()
+
+    # exit on click
+    s.exitonclick()
+
+# draw_court()
+
+####################
+# Question Eleven
+####################
+
+
+####################
+# Question Twelve
+####################
+
+
+####################
+# Question Thirteen
+####################
