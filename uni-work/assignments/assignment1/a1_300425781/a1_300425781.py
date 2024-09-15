@@ -404,13 +404,70 @@ def draw_court():
 ####################
 # Question Eleven
 ####################
+def alogical(n):
+    '''
+    (number) -> number
 
+    Returns the number of times n / 2 must happen until n <= 1 is True
+    Precondition: n >= 1
+    '''
+    
+    # round up since we can have decimal
+    print(math.ceil(math.log(n, 2)))
+    return math.ceil(math.log(n, 2))
+
+# alogical(4200231)
 
 ####################
 # Question Twelve
 ####################
+def cad_cashier(price, payment):
+    '''
+    (number, number) -> number
 
+    Returns the exact change in CAD when given price and payment
+    Preconditions: price and payment are non-negative, payment >= price, last decimal in price is either 0 or 5, both numbers are inputted with 2 decimal places
+    '''
+
+    print(round((payment - price) / 0.05) * 0.05)
+    return round((payment - price) / 0.05) * 0.05
+
+# cad_cashier(19.99, 100.00)
 
 ####################
 # Question Thirteen
 ####################
+def min_CAD_coins(price, payment):
+    '''
+    (number, number) -> tuple
+
+    Returns a tuple of the minimum amount of coins needed to provide accurate change in the format: (toonies, loonies, quarters, dimes, nickels)
+    Preconditions: same as cad_cashier(price, payment)
+        -> price and payment are non-negative, payment >= price, last decimal in price is either 0 or 5, both numbers are inputted with 2 decimal places
+    '''
+
+    change = cad_cashier(price, payment) * 100
+
+    toonieVal = 200
+    loonieVal = 100
+    quarterVal = 25
+    dimeVal = 10
+    nickelVal = 5
+
+    numToonies = math.floor((change / toonieVal))
+    change = change -(toonieVal * numToonies)
+    
+    numLoonies = math.floor((change / loonieVal))
+    change = change -(loonieVal * numLoonies)
+    
+    numQuarters = math.floor((change / quarterVal))
+    change = change -(quarterVal * numQuarters)
+    
+    numDimes = math.floor((change / dimeVal))
+    change = change -(dimeVal * numDimes)
+    
+    numNickels = math.floor((change / nickelVal))
+
+    print((numToonies, numLoonies, numQuarters, numDimes, numNickels))
+    return (numToonies, numLoonies, numQuarters, numDimes, numNickels)
+# min_CAD_coins(3, 20)

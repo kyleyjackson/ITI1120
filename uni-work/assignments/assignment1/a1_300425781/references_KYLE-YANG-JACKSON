@@ -1,9 +1,11 @@
 Question 10
-    s.bgcolor('#f4d48d')
-    t.pencolor('white')
+    s.bgcolor(x)
+    t.pencolor(x)
     t.end_fill()
     t.begin_fill()
-    t.pensize(5)
+    t.pensize(x)
     t.hideturtle()
-    t.speed(10)
+    t.speed(x)
 From: https://docs.python.org/3/library/turtle.html
+
+Question 13
