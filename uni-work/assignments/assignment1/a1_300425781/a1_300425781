@@ -1,0 +1,3 @@
+Question 2
+isinstance(c, int)
+https://note.nkmk.me/en/python-check-int-float/#check-if-float-is-an-integer-is_integer
