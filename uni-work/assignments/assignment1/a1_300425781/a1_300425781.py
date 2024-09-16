@@ -19,7 +19,7 @@ def mh2kh(s):
     '''
 
     # print(1.609344 * s)  # for vscode testing
-    return 1.609344 * s
+    return 1.60934 * s
 
 # mh2kh(10)
 
@@ -429,7 +429,7 @@ def cad_cashier(price, payment):
     Preconditions: price and payment are non-negative, payment >= price, last decimal in price is either 0 or 5, both numbers are inputted with 2 decimal places
     '''
 
-    print(round((payment - price) / 0.05) * 0.05)
+    # print(round((payment - price) / 0.05) * 0.05)
     return round((payment - price) / 0.05) * 0.05
 
 # cad_cashier(19.99, 100.00)
@@ -455,19 +455,19 @@ def min_CAD_coins(price, payment):
     nickelVal = 5
 
     numToonies = math.floor((change / toonieVal))
-    change = change -(toonieVal * numToonies)
+    change = change - (toonieVal * numToonies)
     
     numLoonies = math.floor((change / loonieVal))
-    change = change -(loonieVal * numLoonies)
+    change = change - (loonieVal * numLoonies)
     
     numQuarters = math.floor((change / quarterVal))
-    change = change -(quarterVal * numQuarters)
+    change = change - (quarterVal * numQuarters)
     
     numDimes = math.floor((change / dimeVal))
-    change = change -(dimeVal * numDimes)
+    change = change - (dimeVal * numDimes)
     
     numNickels = math.floor((change / nickelVal))
 
-    print((numToonies, numLoonies, numQuarters, numDimes, numNickels))
+    # print((numToonies, numLoonies, numQuarters, numDimes, numNickels))
     return (numToonies, numLoonies, numQuarters, numDimes, numNickels)
 # min_CAD_coins(3, 20)
