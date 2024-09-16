@@ -13,7 +13,7 @@ import math
 ####################
 def mh2kh(s):
     '''
-    (number) -> number
+    (number) => number
     
     Returns the input speed in km/h
     '''
@@ -28,7 +28,7 @@ def mh2kh(s):
 ####################
 def pythagorean_pair(a, b):
     '''
-    (number, number) -> Boolean
+    (number, number) => Boolean
 
     Returns True if numbers a and b form a pythagorean pair, returns false otherwise
     '''
@@ -46,7 +46,7 @@ def pythagorean_pair(a, b):
 ####################
 def in_out(xs, ys, side):
     '''
-    (number, number, number) -> Boolean
+    (number, number, number) => Boolean
 
     Returns True if the query point is inside of the boundaries of the specified square
     Precondition: side must be non-negative
@@ -68,7 +68,7 @@ def in_out(xs, ys, side):
 ####################
 def safe(n):
     '''
-    (number) -> Boolean
+    (number) => Boolean
 
     Returns False if the number n does not contain 9 and cannot be divided by 9, otherwise returns True
     Precondition: n must be non-negative
@@ -88,7 +88,7 @@ def safe(n):
 ####################
 def quote_maker(quote, name, year):
     '''
-    (string, string, number) -> string
+    (string, string, number) => string
 
     Returns a formatted quote after given the quote, author, and year
     '''
@@ -105,7 +105,7 @@ def quote_maker(quote, name, year):
 ####################
 def quote_displayer():
     '''
-    () -> string
+    () => string
 
     Returns a formatted quote after the user inputs the quote, author, and year
     '''
@@ -125,7 +125,7 @@ def quote_displayer():
 ####################
 def rps_winner():
     '''
-    () -> None
+    () => None
 
     Prints the result of p1 in a rock paper scissors game between p1 and p2 after given inputs
     '''
@@ -145,7 +145,7 @@ def rps_winner():
 ####################
 def fun(x):
     '''
-    (number) -> number
+    (number) => number
 
     Returns the answer y for the expression 10^(4y) = x + 3 
     '''
@@ -162,7 +162,7 @@ def fun(x):
 ####################
 def ascii_name_plaque(name):
     '''
-    (string) -> none
+    (string) => none
 
     Prints an ascii plaque with the inputted name in the middle
     '''
@@ -185,7 +185,7 @@ def ascii_name_plaque(name):
 ####################
 def draw_court():
     '''
-    () -> none
+    () => none
 
     Draws a basketball court using turtle graphics
     '''
@@ -410,7 +410,7 @@ def draw_court():
 ####################
 def alogical(n):
     '''
-    (number) -> number
+    (number) => number
 
     Returns the number of times n / 2 must happen until n <= 1 is True
     Precondition: n >= 1
@@ -427,7 +427,7 @@ def alogical(n):
 ####################
 def cad_cashier(price, payment):
     '''
-    (number, number) -> number
+    (number, number) => number
 
     Returns the exact change in CAD when given price and payment
     Preconditions: price and payment are non-negative, payment >= price, last decimal in price is either 0 or 5, both numbers are inputted with 2 decimal places
@@ -443,11 +443,11 @@ def cad_cashier(price, payment):
 ####################
 def min_CAD_coins(price, payment):
     '''
-    (number, number) -> tuple
+    (number, number) => tuple
 
     Returns a tuple of the minimum amount of coins needed to provide accurate change in the format: (toonies, loonies, quarters, dimes, nickels)
     Preconditions: same as cad_cashier(price, payment)
-        -> price and payment are non-negative, payment >= price, last decimal in price is either 0 or 5, both numbers are inputted with 2 decimal places
+        => price and payment are non-negative, payment >= price, last decimal in price is either 0 or 5, both numbers are inputted with 2 decimal places
     '''
 
     change = cad_cashier(price, payment) * 100 # convert change into cents, already rounded to nearest nickel
