@@ -33,10 +33,10 @@ def pythagorean_pair(a, b):
     Returns True if numbers a and b form a pythagorean pair, returns false otherwise
     '''
 
-    c = math.sqrt((a ** 2 + b ** 2))
+    c = math.sqrt((a ** 2 + b ** 2)) # pythagorean theorem
 
     # print(round(c, 0) == c) # vscode testing
-    return round(c, 0) == c
+    return round(c, 0) == c # compare & return
 
 # pythagorean_pair(-300, 400)
 # pythagorean_pair(2, 2)
@@ -53,13 +53,13 @@ def in_out(xs, ys, side):
     '''
     
     xInput = input("Enter the x coordinate of the query point: ")
-    xc = float(xInput)
+    xc = float(xInput) # str => float
 
     yInput = input("Enter the y coordinate of the query point: ")
-    yc = float(yInput)
+    yc = float(yInput) # str => float
 
     # print((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side))  # for vscode testing
-    return((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side))
+    return ((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side)) # compare and return
 
 # in_out(0, 0, 2.5)
 
@@ -74,10 +74,10 @@ def safe(n):
     Precondition: n must be non-negative
     '''
 
-    nStr = str(n)
+    nStr = str(n) # convert to str for substring check
 
     # print(not('9' in nStr or n % 9 == 0)) # for vscode testing
-    return ('9' in nStr or n % 9 == 0)
+    return ('9' in nStr or n % 9 == 0) # substring check
 
 # safe(81)
 # safe(97)
@@ -93,10 +93,10 @@ def quote_maker(quote, name, year):
     Returns a formatted quote after given the quote, author, and year
     '''
 
-    year = str(year)
+    year = str(year) # int => str
 
     # print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
-    return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
+    return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"') # create quote
 
 # quote_maker('hello', 'someone', 2000)
 
@@ -110,12 +110,13 @@ def quote_displayer():
     Returns a formatted quote after the user inputs the quote, author, and year
     '''
 
+    # inputs
     quote = input('Enter the quote: ')
     name = input('Enter the name of the author of your quote: ')
     year = input('Enter the year the quote was created: ')
 
     # print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
-    return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
+    return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"') # form quote
 
 # quote_displayer()
 
@@ -129,9 +130,11 @@ def rps_winner():
     Prints the result of p1 in a rock paper scissors game between p1 and p2 after given inputs
     '''
 
+    # inputs
     p1 = input('Player 1\'s move (rock, paper, scissors): ')
     p2 = input('Player 2\'s move (rock, paper, scissors): ')
 
+    # print p1 victory and tie statements
     print('Player 1 wins, this is ' + str(((p1 == 'rock' and p2 == 'scissors') or (p1 == 'paper' and p2 == 'rock') or (p1 == 'scissors' and p2 == 'paper'))))
     print('Player 1 and Player 2 tied, this is ' + str(p1 == p2))
     
@@ -415,7 +418,7 @@ def alogical(n):
     
     # round up since we can have decimal
     # print(math.ceil(math.log(n, 2)))
-    return math.ceil(math.log(n, 2))
+    return math.ceil(math.log(n, 2)) # math.ceil rounds up
 
 # alogical(4200231)
 
@@ -431,7 +434,7 @@ def cad_cashier(price, payment):
     '''
 
     # print(round((payment - price) / 0.05) * 0.05)
-    return round((payment - price) / 0.05) * 0.05
+    return round((payment - price) / 0.05) * 0.05 # convert to nearest nickel
 
 # cad_cashier(19.99, 100.00)
 
@@ -447,15 +450,17 @@ def min_CAD_coins(price, payment):
         -> price and payment are non-negative, payment >= price, last decimal in price is either 0 or 5, both numbers are inputted with 2 decimal places
     '''
 
-    change = cad_cashier(price, payment) * 100
+    change = cad_cashier(price, payment) * 100 # convert change into cents, already rounded to nearest nickel
 
+    # coin cent values
     toonieVal = 200
     loonieVal = 100
     quarterVal = 25
     dimeVal = 10
     nickelVal = 5
 
-    numToonies = math.floor((change / toonieVal))
+    # calculate number of coins needed in order, then subtract
+    numToonies = math.floor((change / toonieVal)) # math.floor() used to round down 
     change = change - (toonieVal * numToonies)
     
     numLoonies = math.floor((change / loonieVal))
