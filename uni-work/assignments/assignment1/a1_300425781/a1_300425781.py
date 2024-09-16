@@ -59,7 +59,7 @@ def in_out(xs, ys, side):
     yc = float(yInput)
 
     # print((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side))  # for vscode testing
-    return((xc >= xs and xc <= xs *+side) and (yc >= ys and yc <= ys + side))
+    return((xc >= xs and xc <= xs + side) and (yc >= ys and yc <= ys + side))
 
 # in_out(0, 0, 2.5)
 
@@ -95,7 +95,7 @@ def quote_maker(quote, name, year):
 
     year = str(year)
 
-    print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
+    # print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
     return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
 
 # quote_maker('hello', 'someone', 2000)
@@ -114,7 +114,7 @@ def quote_displayer():
     name = input('Enter the name of the author of your quote: ')
     year = input('Enter the year the quote was created: ')
 
-    print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
+    # print('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
     return ('In ' + year + ', a person called ' + name + ' said: \"' + quote + '\"')
 
 # quote_displayer()
@@ -133,7 +133,8 @@ def rps_winner():
     p2 = input('Player 2\'s move (rock, paper, scissors): ')
 
     print('Player 1 wins, this is ' + str(((p1 == 'rock' and p2 == 'scissors') or (p1 == 'paper' and p2 == 'rock') or (p1 == 'scissors' and p2 == 'paper'))))
-
+    print('Player 1 and Player 2 tied, this is ' + str(p1 == p2))
+    
 # rps_winner()
         
 ####################
@@ -413,7 +414,7 @@ def alogical(n):
     '''
     
     # round up since we can have decimal
-    print(math.ceil(math.log(n, 2)))
+    # print(math.ceil(math.log(n, 2)))
     return math.ceil(math.log(n, 2))
 
 # alogical(4200231)
