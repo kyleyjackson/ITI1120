@@ -77,7 +77,7 @@ def safe(n):
     nStr = str(n) # convert to str for substring check
 
     # print(not('9' in nStr or n % 9 == 0)) # for vscode testing
-    return ('9' in nStr or n % 9 == 0) # substring check
+    return not('9' in nStr or n % 9 == 0) # substring check
 
 # safe(81)
 # safe(97)

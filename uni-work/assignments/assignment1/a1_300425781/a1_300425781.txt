@@ -1,0 +1,147 @@
+= Question 1 =
+mh2kh(5)
+8.0467
+mh2kh(110.4)
+177.67113600000002
+
+= Question 2 =
+pythagorean_pair(2, 2)
+False
+pythagorean_pair(6, 2)
+False
+pythagorean_pair(6, 8)
+True
+pythagorean_pair(300, -400)
+True
+
+= Question 3 =
+in_out(0, 0, 2.5)
+Enter the x coordinate of the query point: 0
+Enter the y coordinate of the query point: 1.2
+True
+in_out(2.5, 1, 1)
+Enter the x coordinate of the query point: -1
+Enter the y coordinate of the query point: 1.5
+False
+in_out(-2.5, 1, 2.1)
+Enter the x coordinate of the query point: -1
+Enter the y coordinate of the query point: 1.5
+True
+
+= Question 4 =
+safe(93)
+False
+safe(82)
+True
+safe(29)
+False
+safe(36)
+False
+safe(9)
+False
+safe(7)
+True
+
+= Question 5 =
+quote_maker("i love iti1120", "kyle j", 2024)
+'In 2024, a person called kyle j said: "i love iti1120"'
+quote_maker("everything should be made as simple as possible, but not simpler.", "albert einstein", 1933)
+'In 1933, a person called albert einstein said: "everything should be made as simple as possible, but not simpler."'
+
+= Question 6 =
+quote_displayer()
+Enter the quote: i love iti1120
+Enter the name of the author of your quote: kyle
+Enter the year the quote was created: 2024
+'In 2024, a person called kyle said: "i love iti1120"'
+
+= Question 7 =
+rps_winner()
+Player 1's move (rock, paper, scissors): rock
+Player 2's move (rock, paper, scissors): paper
+Player 1 wins, this is False
+Player 1 and Player 2 tied, this is False
+rps_winner()
+Player 1's move (rock, paper, scissors): paper
+Player 2's move (rock, paper, scissors): rock
+Player 1 wins, this is True
+Player 1 and Player 2 tied, this is False
+rps_winner()
+Player 1's move (rock, paper, scissors): rock
+Player 2's move (rock, paper, scissors): rock
+Player 1 wins, this is False
+Player 1 and Player 2 tied, this is True
+rps_winner()
+Player 1's move (rock, paper, scissors): scissors
+Player 2's move (rock, paper, scissors): rock
+Player 1 wins, this is False
+Player 1 and Player 2 tied, this is False
+
+= Question 8 =
+fun(7)
+0.25
+fun(20)
+0.3404319590043982
+fun(999999997)
+2.2499999999999996
+fun(0.1)
+0.12284042345856816
+
+= Question 9 =
+ascii_name_plaque("kyle")
+**************
+*            *
+*  __kyle__  *
+*            *
+**************
+ascii_name_plaque("captain kara 'starbuck' thrace")
+****************************************
+*                                      *
+*  __captain kara 'starbuck' thrace__  *
+*                                      *
+****************************************
+
+= Question 10 =
+draw_court()
+
+= Question 11 =
+alogical(5.4)
+3
+alogical(4)
+2
+alogical(1000)
+10
+alogical(4200231)
+23
+
+= Question 12 =
+cad_cashier(10.58, 11)
+0.4
+cad_cashier(98.87, 100)
+1.1500000000000001
+cad_cashier(10.58, 15)
+4.4
+cad_cashier(10.55, 15)
+4.45
+cad_cashier(10.52, 15)
+4.5
+cad_cashier(10.50, 15)
+4.5
+
+= Question 13 =
+min_CAD_coins(10.58, 11)
+(0, 0, 1, 1, 1)
+min_CAD_coins(98.87, 100)
+(0, 1, 0, 1, 1)
+min_CAD_coins(10.58, 15)
+(2, 0, 1, 1, 1)
+min_CAD_coins(10.55, 15)
+(2, 0, 1, 2, 0)
+min_CAD_coins(10.54, 15)
+(2, 0, 1, 2, 0)
+min_CAD_coins(10.52, 15)
+(2, 0, 2, 0, 0)
+min_CAD_coins(10.50, 15)
+(2, 0, 2, 0, 0)
+min_CAD_coins(3, 20)
+(8, 1, 0, 0, 0)
