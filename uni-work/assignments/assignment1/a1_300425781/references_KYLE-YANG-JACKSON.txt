@@ -1,4 +1,5 @@
 Question 10
+# these functions were used throughout the question
     s.bgcolor(x)
     t.pencolor(x)
     t.end_fill()
@@ -7,5 +8,3 @@ Question 10
     t.hideturtle()
     t.speed(x)
 From: https://docs.python.org/3/library/turtle.html
-
-Question 13
