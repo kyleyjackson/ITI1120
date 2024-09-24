@@ -10,29 +10,69 @@ def elementary_school_quiz(flag, n):
     Prompts the user with n number of math questions. Logarithmic if flag = 0, exponentiation if flag = 1. 
     Questions are randomized with integers 1 through 10, then returns the number of question answered correctly.
 
-    Preconditions: flag is either 0 or 1, n is either 1 or 2
+    Returns an integer numRight indicated how many questions the user answered correctly
 
-    No checks are done here, they are done in the main section at the bottom
+    Preconditions: flag is either 0 or 1, n is either 1 or 2
     '''
     
-    q = 0 # current question number
-    rand = random.randint(0, 10) # random number for questions
-    
-    if flag == 0: # log
-        if n == 0: # no questions desired
-            return -1
+    q = 1 # current question number
+    numRight = 0 # number of correct questions
+    n = int(n) # convert
+    sameRand = -1 # prevents same question twice
 
-        else: 
-            while n > 0: # ask questions until there are no more questions left
-                pass
+    if flag == '0': # log
+        while n > 0: # ask questions until there are no more questions left
+            rand = random.randint(0, 10) # initialize random number
 
-    elif flag == 1: # exponentiation
-        if n == 0:
-            return -1
+            while rand == sameRand:
+                rand = random.randint(0, 10) # initialize random number
+
+            strRand = str(2 ** rand)
+            ans = str(int(math.log(2 ** rand, 2))) # answer to question
+            # print(ans)
+
+            print('Question ' + str(q) + ':')
+            studentAns = input('2 to the what equals ' + strRand + ', i.e. what is the result of log_2 (' + strRand + ')? ')
+
+            # check if right or wrong
+            if (ans == studentAns):
+                numRight += 1
+                print('Correct!')
+            else:
+                print('Incorrect.')
+
+            # question finished
+            n -= 1
+            q += 1
         
-        else:
-            while n > 0:
-                pass
+        return numRight
+
+    elif flag == '1': # exponentiation
+        while n > 0: # ask questions until there are no more questions left
+            rand = random.randint(0, 10) # initialize random number
+
+            while rand == sameRand:
+                rand = random.randint(0, 10) # initialize random number
+            
+            strRand = str(rand)
+            ans = str(int(2 ** rand)) # answer to question
+            # print(ans)
+
+            print('Question ' + str(q) + ':')
+            studentAns = input('What does 2 to the power of ' + strRand + ' equal? ')
+
+            # check if right or wrong
+            if (ans == studentAns):
+                numRight += 1
+                print('Correct!')
+            else:
+                print('Incorrect.')
+
+            # question finished
+            n -= 1
+            q += 1
+        
+        return numRight
 
 # high
 def high_school_quiz(a, b, c):
@@ -102,18 +142,32 @@ if status == '1': # if they are in elementary school
         if numQuestions != '0' and numQuestions != '1' and numQuestions != '2': # check if the number of questions is proper
             print('Invalid choice, only 0, 1, or 2 is accepted.')
 
-        elif numQuestions == '1' or numQuestions == '2': # begin the quiz if it is
-            print(name + ', here are your ' + numQuestions + ' questions:')
+        elif numQuestions == '2': # begin the quiz if it is
+            print(name + ', here are your 2 questions:')
 
             val = elementary_school_quiz(typeQuestion, numQuestions)
             
-            if val == -1: # no questions right
+            if val == 0: # no questions right
                 print('I think you need more practice ' + name + '.')
             
-            elif val == 1: # all questions right
+            elif val == int(numQuestions): # all questions right
                 print('Great job ' + name + '! You\'ll definitely get an A next time!')
 
-            elif val == 0: # 1/2 questions right
+            elif val == int(numQuestions) // 2: # 1/2 questions right
+                print('You did ok ' + name + ', but I think you can do better.')
+        
+        elif numQuestions == '1':
+            print(name + ', here is your question:')
+
+            val = elementary_school_quiz(typeQuestion, numQuestions)
+
+            if val == 0: # no questions right
+                print('I think you need more practice ' + name + '.')
+            
+            elif val == int(numQuestions): # all questions right
+                print('Great job ' + name + '! You\'ll definitely get an A next time!')
+
+            elif val == int(numQuestions) // 2: # 1/2 questions right
                 print('You did ok ' + name + ', but I think you can do better.')
 
 elif status == '2': # if they are in high school
