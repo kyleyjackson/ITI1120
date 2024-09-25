@@ -1,0 +1,230 @@
+* PLEASE READ: I did the text formatting before the actual quiz functionality, so all the code here is in the nice format *
+
+ES 1 question correct
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 1
+How many practice question would you like to do?
+Please choose from 0, 1, or 2: 1
+K, here is your question:
+Question 1:
+What is the answer of 2^6? 64
+Correct!
+Great job K! You'll definitely get an A next time!
+Good bye K!
+
+
+ES 1 question wrong
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 1
+How many practice question would you like to do?
+Please choose from 0, 1, or 2: 1
+K, here is your question:
+Question 1:
+What is the answer of 2^9? 0
+Incorrect.
+I think you need more practice K.
+Good bye K!
+
+
+ES no questions + welcome board
+
+*************************************************************************
+*                                                                       *
+*  __K, welcome to my quiz generator for elementary school students!__  *
+*                                                                       *
+*************************************************************************
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 0
+How many practice question would you like to do?
+Please choose from 0, 1, or 2: 0
+Good bye K!
+
+
+ES 2 questions correct
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 0
+How many practice question would you like to do?
+Please choose from 0, 1, or 2: 2
+K, here are your 2 questions:
+Question 1:
+2 to the what equals 1024, i.e. what is the result of log_2 (1024)? 10
+Correct!
+Question 2:
+2 to the what equals 16, i.e. what is the result of log_2 (16)? 4
+Correct!
+Great job K! You'll definitely get an A next time!
+Good bye K!
+
+
+ES 2 questions 1/2 correct
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 0
+How many practice question would you like to do?
+Please choose from 0, 1, or 2: 2
+K, here are your 2 questions:
+Question 1:
+2 to the what equals 1024, i.e. what is the result of log_2 (1024)? 0
+Incorrect.
+Question 2:
+2 to the what equals 256, i.e. what is the result of log_2 (256)? 8
+Correct!
+You did ok K, but I think you can do better.
+Good bye K!
+
+
+ES 2 questions wrong
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 1
+How many practice question would you like to do?
+Please choose from 0, 1, or 2: 2
+K, here are your 2 questions:
+Question 1:
+What is the answer of 2^2? 0
+Incorrect.
+Question 2:
+What is the answer of 2^10? 0
+Incorrect.
+I think you need more practice K.
+Good bye K!
+
+
+HS quadratic with 2 real roots
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: -1
+Enter a number for the second coefficient b: 10
+Enter a number for the final coefficient c: 36
+The following quadratic equation: -1.0x^2 + 10.0x + 36.0 = 0
+has the real roots/solutions: -2.810249675906654 and 12.810249675906654
+
+
+HS quadratic with 2 complex roots
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 1
+Enter a number for the second coefficient b: 2
+Enter a number for the final coefficient c: 3
+The following quadratic equation: 1.0x^2 + 2.0x + 3.0 = 0
+has the complex roots/solutions:
+-1.0 - i1.4142135623730951
+and
+-1.0 + i1.4142135623730951
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 2
+Enter a number for the second coefficient b: 1
+Enter a number for the final coefficient c: 2
+The following quadratic equation: 2.0x^2 + 1.0x + 2.0 = 0
+has the complex roots/solutions:
+-0.25 - i0.9682458365518543
+and
+-0.25 + i0.9682458365518543
+
+
+HS quadratic with 1 real root
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 1
+Enter a number for the second coefficient b: 2
+Enter a number for the final coefficient c: 1
+The following quadratic equation: 1.0x^2 + 2.0x + 1.0 = 0
+has one real root/solution: -1.0
+
+
+HS linear with 1 real root + no more desire to solve equations
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 0
+Enter a number for the second coefficient b: 2.5
+Enter a number for the final coefficient c: -3.246
+The following linear equation: 2.5x - 3.246 = 0
+has the root/solution: 1.2984
+K, would you like a quadratic equation solved? [YES/NO]: no
+Good bye K!
+
+
+HS quadratic with no real roots
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 0
+Enter a number for the second coefficient b: 0
+Enter a number for the final coefficient c: 5
+The following quadratic equation: 0.0x + 5.0 = 0
+has no solution.
+
+
+HS quadratic satisfied for all xER
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 0
+Enter a number for the second coefficient b: 0
+Enter a number for the final coefficient c: 0
+The quadratic equation 0.0x + 0.0 = 0
+Is satisfied for all x.
+
+
+Multiple equations in a row
+
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 0
+Enter a number for the second coefficient b: 0
+Enter a number for the final coefficient c: 2
+The following quadratic equation: 0.0x + 2.0 = 0
+has no solution.
+K, would you like a quadratic equation solved? [YES/NO]: yes
+Good choice!
+Enter a number for the first coefficient a: 0
+Enter a number for the second coefficient b: 0
+Enter a number for the final coefficient c: -2
+The following quadratic equation: 0.0x - 2.0 = 0
+has no solution.
+
+
+Not in target audience + intro board
+
+********************************************
+*                                          *
+*  __Welcome to my math quiz generator!__  *
+*                                          *
+********************************************
+
+What is your name? K
+Hi K. Are you in? Enter
+1 for elementary school
+2 for high school or
+3 or other character(s) for none of the above?
+0
+You are not a part of this software's targeted audience.
+Good bye K!
+
+
+ES invalid question type
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 2
+Invalid choice, only 0 or 1 is accepted.
+Good bye K!
+
+
+ES invalid amount of questions
+
+What type of question(s) would you like?
+Choose 0 for inverse of exponentiation, or 1 for exponentiation: 0
+How many practice question would you like to do?
+Please choose from 0, 1, or 2: 3
+Invalid choice, only 0, 1, or 2 is accepted.
+Good bye K!

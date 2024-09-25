@@ -26,6 +26,8 @@ def elementary_school_quiz(flag, n):
 
             while rand == sameRand:
                 rand = random.randint(0, 10) # initialize random number
+            
+            sameRand = rand # account for new answer
 
             strRand = str(2 ** rand)
             ans = str(int(math.log(2 ** rand, 2))) # answer to question
@@ -53,13 +55,15 @@ def elementary_school_quiz(flag, n):
 
             while rand == sameRand:
                 rand = random.randint(0, 10) # initialize random number
+
+            sameRand = rand
             
             strRand = str(rand)
             ans = str(int(2 ** rand)) # answer to question
             # print(ans)
 
             print('Question ' + str(q) + ':')
-            studentAns = input('What does 2 to the power of ' + strRand + ' equal? ')
+            studentAns = input('What is the answer of 2^' + strRand + '? ')
 
             # check if right or wrong
             if (ans == studentAns):
@@ -77,21 +81,158 @@ def elementary_school_quiz(flag, n):
 # high
 def high_school_quiz(a, b, c):
     '''
-    (number, number, number) => none
+    (number, number, number) => None
 
-    Takes 3 coefficients for a quadratic equation and prints the equation first, then prints its solution(s)
-
-    No checks are done here, they are done in the main section at the bottom
+    Takes 3 coefficients for a quadratic/linear equation and prints the equation first, then prints its solution(s). Complex numbers remain as 'i'
     '''
 
+    # print(a)
+    # print(b)
+    # print(c)
 
+    # discriminant for complex roots
+    disc = (b ** 2) - (4 * a * c) 
+
+    # 1 real root / linear equation
+    ans = 0
+
+    # 2 real roots
+    ans1 = 0
+    ans2 = 0
+
+    # format minus sign
+    bMinus = str(b).replace('-', '- ')
+    cMinus = str(c).replace('-', '- ')
+
+    # constant (c only)
+    if a == 0.0 and b == 0.0 and c != 0.0:
+        # +- c check
+        if c < 0:
+            print('The following quadratic equation: ' + str(b) + 'x ' + cMinus + ' = 0')
+            print('has no solution.')
+
+            return
+
+        else:
+            print('The following quadratic equation: ' + str(b) + 'x + ' + str(c) + ' = 0')
+            print('has no solution.')
+
+            return
+    
+    elif a == 0.0 and b != 0.0: # check if linear or quadratic
+        ans = -c / b
+
+        # +- c check
+        if c < 0:
+            print('The following linear equation: ' + str(b) + 'x ' + cMinus + ' = 0')
+            print('has the root/solution: ' + str(ans))
+
+            return
+
+        else:
+            print('The following linear equation: ' + str(b) + 'x + ' + str(c) + ' = 0')
+            print('has the root/solution: ' + str(ans))
+
+            return
+
+    elif a == 0.0 and b == 0.0 and c == 0.0: # satisfied for all x
+        print('The quadratic equation 0.0x + 0.0 = 0')
+        print('Is satisfied for all x.')
+
+    else:
+        if (abs(disc) == disc): # no complex root
+            # root(s)
+            ans1 = (-b + math.sqrt(disc)) / (2 * a)
+            ans2 = (-b - math.sqrt(disc)) / (2 * a)
+
+            # compare answers
+            if ans1 == ans2:
+                ans = ans1 # single root
+
+                # +- c check
+                if c < 0 and b < 0:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 ' + bMinus + 'x ' + cMinus + ' = 0')
+                    print('has one real root/solution: ' + str(ans))
+
+                    return
+
+                elif c < 0:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 + ' + str(b) + 'x + ' + cMinus + ' = 0')
+                    print('has one real root/solution: ' + str(ans))
+
+                    return
+                
+                elif b < 0:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 ' + bMinus + 'x + ' + str(c) + ' = 0')
+                    print('has one real root/solution: ' + str(ans))
+
+                    return  
+                
+                else:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 + ' + str(b) + 'x + ' + str(c) + ' = 0')
+                    print('has one real root/solution: ' + str(ans))
+
+                    return
+
+            else: # 2 real roots
+                if c < 0 and b < 0:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 ' + bMinus + 'x ' + cMinus + ' = 0')
+                    print('has the real roots/solutions: ' + str(ans1) + ' and ' + str(ans2))
+
+                    return
+
+                elif c < 0:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 + ' + str(b) + 'x + ' + cMinus + ' = 0')
+                    print('has the real roots/solutions: ' + str(ans1) + ' and ' + str(ans2))
+
+                    return
+                
+                elif b < 0:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 ' + bMinus + 'x + ' + str(c) + ' = 0')
+                    print('has the real roots/solutions: ' + str(ans1) + ' and ' + str(ans2))
+
+                    return  
+                
+                else:
+                    print('The following quadratic equation: ' + str(a) + 'x^2 + ' + str(b) + 'x + ' + str(c) + ' = 0')
+                    print('has the real roots/solutions: ' + str(ans1) + ' and ' + str(ans2))
+
+                    return
+
+        else: # complex
+            discAbs = math.sqrt(abs(disc)) / (2 * a)
+
+            if c < 0 and b < 0:
+                print('The following quadratic equation: ' + str(a) + 'x^2 ' + bMinus + 'x ' + cMinus + ' = 0')
+                print('has the complex roots/solutions: \n' + str(-b / (2 * a)) + ' - i' + str(discAbs) + '\nand\n' + str(-b / (2 * a)) + ' + i' + str(discAbs))
+
+                return
+
+            elif c < 0:
+                print('The following quadratic equation: ' + str(a) + 'x^2 + ' + str(b) + 'x + ' + cMinus + ' = 0')
+                print('has the complex roots/solutions: \n' + str(-b / (2 * a)) + ' - i' + str(discAbs) + '\nand\n' + str(-b / (2 * a)) + ' + i' + str(discAbs))
+
+                return
+            
+            elif b < 0:
+                print('The following quadratic equation: ' + str(a) + 'x^2 ' + bMinus + 'x + ' + str(c) + ' = 0')
+                print('has the complex roots/solutions: \n' + str(-b / (2 * a)) + ' - i' + str(discAbs) + '\nand\n' + str(-b / (2 * a)) + ' + i' + str(discAbs))
+
+                return  
+            
+            else:
+                print('The following quadratic equation: ' + str(a) + 'x^2 + ' + str(b) + 'x + ' + str(c) + ' = 0')
+                print('has the complex roots/solutions: \n' + str(-b / (2 * a)) + ' - i' + str(discAbs) + '\nand\n' + str(-b / (2 * a)) + ' + i' + str(discAbs))
+
+                return
+            
 
 # main
 
 # print welcome messages
 def welcomeMessage(str, type):
     '''
-    (string, int) => none
+    (string, int)
 
     Prints a welcome message board based on the type specified
 
@@ -174,8 +315,10 @@ elif status == '2': # if they are in high school
     welcomeMessage(name, 1)
 
     flag = True
+
+    # while a user still wants equations solved
     while flag:
-        question = input(name + ", would you like a quadratic equation solved? [YES/NO]:")
+        question = input(name + ", would you like a quadratic equation solved? [YES/NO]: ")
         question = question.lower().strip() # force lowercase and remove whitespace on ends
 
         if question != "yes":
@@ -185,10 +328,13 @@ elif status == '2': # if they are in high school
             print("Good choice!")
 
             # coefficients
-            a = input('Enter a number for the first coefficient a: ')
-            b = input('Enter a number for the second coefficient b: ')
-            c = input('Enter a number for the final coefficient c: ')
- 
+            a = float(input('Enter a number for the first coefficient a: '))
+            b = float(input('Enter a number for the second coefficient b: '))
+            c = float(input('Enter a number for the final coefficient c: '))
+
+            high_school_quiz(a, b, c) # start the quiz
+
+# if grade does not equal elementary or high
 else:
     print('You are not a part of this software\'s targeted audience.')
 
