@@ -1,0 +1,44 @@
+== 2.1 ==
+min_enclosing_rectangle(1, 1, 1)
+(0, 0)
+min_enclosing_rectangle(4.5, 10, 2)
+(5.5, -2.5)
+min_enclosing_rectangle(-1, 1, 1)
+min_enclosing_rectangle(500, 1000, 2000)
+(500, 1500)
+
+== 2.2 ==
+vote_percentage('yes, yesyesnoabstained no yes no no no yes')
+0.5
+vote_percentage('yes yes yes no no')
+0.6
+
+== 2.3 ==
+vote()
+Enter the yes, no, and abstained votes one by one then press enter when done
+yes yes yes yes abstained
+Vote passes unanimously.
+vote()
+Enter the yes, no, and abstained votes one by one then press enter when done
+no yes no yes yes
+Vote passes with simple majority
+vote()
+Enter the yes, no, and abstained votes one by one then press enter when done
+yes no no no no abstained
+Vote failed.
+vote()
+Enter the yes, no, and abstained votes one by one then press enter when done
+yes yes yes yes no yes yes no
+Vote passes with super majority.
+
+== 2.4 ==
+l2lo(7.5)
+(7, 8.0)
+l2lo(9.25)
+(9, 4.0)
+l2lo(10.75)
+(10, 12.0)
+l2lo(20)
+(20, 0)
+l2lo(20.25)
+(20, 4.0)
