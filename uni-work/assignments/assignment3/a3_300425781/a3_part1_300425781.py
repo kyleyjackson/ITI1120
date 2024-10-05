@@ -11,7 +11,7 @@ def split_tester(N, d):
 
     # length for iteration
     length = len(str(N))
-    m = length
+    m = 0
 
     # new stuff
     i = 0
@@ -22,11 +22,12 @@ def split_tester(N, d):
         return False
     
     else:
-        while m <= length:
+        while m < length:
             if len(sub) == d: # when split reaches desired length
                 if int(sub) > i: # check if increasing
                     i = int(sub)
                     sub = ''
+
                 else:
                     return False
             
@@ -35,8 +36,9 @@ def split_tester(N, d):
             
             m += 1
     
-    print(True)
     return True
+
+split_tester(123100, 4)
             
 
 
@@ -64,7 +66,7 @@ def welcomeMessage(str):
             
 # main
 # Your code for the welcome message goes here, instead of name="Vida"
-name = "Vida"
+name = ''
 
 flag = True
 while flag:
