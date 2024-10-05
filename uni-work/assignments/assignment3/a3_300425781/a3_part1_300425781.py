@@ -2,7 +2,11 @@
 def split_tester(N, d):
     # Your code for split_tester function goes here (instead of keyword pass)
     # Your code should include  dosctrings and the body of the function
-    pass
+    '''
+    (string, string) => string
+    
+    Takes a string N, consisting of numbers and another string d, which indicates the size of the groups that N will be split into
+    '''
 
 # you can add more function definitions here if you like       
 
