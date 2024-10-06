@@ -3,44 +3,50 @@ def split_tester(N, d):
     # Your code for split_tester function goes here (instead of keyword pass)
     # Your code should include  dosctrings and the body of the function
     '''
-    (int, int) => Boolean
+    (string, string) => Boolean
     
     Takes a sequence of numbers N which are to be split into groups of length d. If N cannot be split into groups of length d, this functions returns False
     Else, if the groups are increasing in numerical value, this function returns True, otherwise this function returns False
     '''
 
     # length for iteration
-    length = len(str(N))
+    length = len(N)
     m = 0
 
     # new stuff
     i = 0
     sub = ''
 
+    # check if N only contains numbers
+    if not(N.isdigit()):
+        return False
+
     # check if N can be split into groups of length d
-    if length % d != 0:
+    if length % int(d) != 0:
         return False
     
     else:
-        while m < length:
-            if len(sub) == d: # when split reaches desired length
+        while m <= length:
+            if len(sub) == int(d): # when split reaches desired length
                 if int(sub) > i: # check if increasing
                     i = int(sub)
-                    sub = ''
+
+                    if m < length:
+                        sub = N[m]
+                    
+                    else:
+                        sub = ''
 
                 else:
                     return False
             
             else: # otherwise...
-                sub += str(N)[m]
+                sub += N[m]
             
+            print(m, length, sub, i)
             m += 1
     
     return True
-
-split_tester(123100, 4)
-            
-
 
 # you can add more function definitions here if you like       
 
@@ -66,16 +72,22 @@ def welcomeMessage(str):
             
 # main
 # Your code for the welcome message goes here, instead of name="Vida"
-name = ''
+welcomeMessage('Welcome to my increasing-splits tester')
+name = input('What is your name? ')
 
 flag = True
+welcomeMessage(name + ' welcome to my increasing-splits tester')
+
 while flag:
     question = input(name + ", would you like to test if a number admits an increasing-split of given size? ")
     question = (question.strip()).lower()
+    
     if question == 'no':
         flag = False
-    #YOUR CODE GOES HERE. The next line should be elif or else.
-    else:
+        welcomeMessage('Goodbye ' + name)
+
+    elif question == 'yes':
         pass
-        
-#finally your code goes here too.
+
+    else:
+        ''
