@@ -1,0 +1,5 @@
+part 1
+https://en.wikipedia.org/wiki/Pell_number (for pell number reference)
+
+part 2
+no references used
