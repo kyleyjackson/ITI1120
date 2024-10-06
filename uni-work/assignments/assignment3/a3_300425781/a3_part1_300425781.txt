@@ -1,0 +1,104 @@
+split_tester('123321', '3')
+True
+
+split_tester('123243', '2')
+True
+
+split_tester('121132', '1')
+False
+
+split_tester('1756876', '2')
+False
+
+split_tester('EErrEEtt', '2')
+False
+
+split_tester('12', '2')
+True
+
+************************************************
+*                                              *
+*  __Welcome to my increasing-splits tester__  *
+*                                              *
+************************************************
+
+What is your name? yes
+
+*****************************************************
+*                                                   *
+*  __yes, welcome to my increasing-splits tester__  *
+*                                                   *
+*****************************************************
+
+yes, would you like to test if a number admits an increasing-split of given size? yes
+Good choice!
+Enter a positive integer: 123456789
+Input the split. The split has to divide the length of 123456789 (i.e. 9): 1
+1, 2, 3, 4, 5, 6, 7, 8, 9
+The sequence is increasing
+yes, would you like to test if a number admits an increasing-split of given size? no
+
+*********************
+*                   *
+*  __Goodbye yes__  *
+*                   *
+*********************
+
+
+************************************************
+*                                              *
+*  __Welcome to my increasing-splits tester__  *
+*                                              *
+************************************************
+
+What is your name? yes
+
+*****************************************************
+*                                                   *
+*  __yes, welcome to my increasing-splits tester__  *
+*                                                   *
+*****************************************************
+
+yes, would you like to test if a number admits an increasing-split of given size? 2
+Please input yes or no: 2
+Please input yes or no: 2
+Please input yes or no: no
+
+*********************
+*                   *
+*  __Goodbye yes__  *
+*                   *
+*********************
+
+
+************************************************
+*                                              *
+*  __Welcome to my increasing-splits tester__  *
+*                                              *
+************************************************
+
+What is your name? yes
+
+*****************************************************
+*                                                   *
+*  __yes, welcome to my increasing-splits tester__  *
+*                                                   *
+*****************************************************
+
+yes, would you like to test if a number admits an increasing-split of given size? yes
+Good choice!
+Enter a positive integer: -1
+The input must be a positive integer, try again: 0
+The input must be a positive integer, try again: 123
+Input the split. The split has to divide the length of 123 (i.e. 3): -3
+The split must divide the length of 123 (i.e. 3), try again: -2
+The split must divide the length of 123 (i.e. 3), try again: 1
+1, 2, 3
+The sequence is increasing
+yes, would you like to test if a number admits an increasing-split of given size? no
+
+*********************
+*                   *
+*  __Goodbye yes__  *
+*                   *
+*********************

@@ -16,14 +16,16 @@ def split_tester(N, d):
     # new stuff
     i = 0
     sub = ''
+    display = ''
+    result = True
 
     # check if N only contains numbers
     if not(N.isdigit()):
-        return False
+        result = False
 
     # check if N can be split into groups of length d
-    if length % int(d) != 0:
-        return False
+    elif length % int(d) != 0:
+        result = False
     
     else:
         while m <= length:
@@ -38,15 +40,22 @@ def split_tester(N, d):
                         sub = ''
 
                 else:
-                    return False
+                    result = False
             
             else: # otherwise...
                 sub += N[m]
             
-            print(m, length, sub, i)
+            if len(sub) == int(d):
+                display += sub + ', '
+
             m += 1
+
+    print(display[0:len(display) - 2])
+    if not(result):
+        return False
     
-    return True
+    else:
+        return True
 
 # you can add more function definitions here if you like       
 
@@ -69,6 +78,50 @@ def welcomeMessage(str):
     print(b + s * (strLen + 8) + b)
     print(b * (strLen + 10))
     print()
+
+def ansYes():
+    '''
+    () => None
+    
+    Prompts the user for a positive integer N and split d, then prints if N split into groups of d length is increasing
+    '''
+
+    N = input('Enter a positive integer: ').strip()
+
+    # check if N is an integer in string form
+    if not(N.isdigit()) or float(N) % 1 != 0 or float(N) < 1:
+        no = True
+
+        while no:
+            N = input('The input must be a positive integer, try again: ')
+
+            if N.isdigit() and float(N) % 1 == 0 and float(N) > 0:
+                no = False
+            
+            else:
+                no = True
+    
+    d = input('Input the split. The split has to divide the length of ' + N + ' (i.e. ' + str(len(N)) + '): ').strip()
+
+    # check if N is divisible by d
+    if not(d.isdigit()) or int(d) < 1 or int(N) % int(d) != 0:
+        no = True
+
+        while no:
+            if d.isdigit() and int(d) > 0 and int(N) % int(d) == 0:
+                no = False
+            
+            else:
+                d = input('The split must divide the length of ' + N + ' (i.e. ' + str(len(N)) + '), try again: ')
+                no = True
+        
+    bool = split_tester(N, d)
+
+    if bool:
+        print('The sequence is increasing')
+    
+    else:
+        print('The sequence is not increasing')
             
 # main
 # Your code for the welcome message goes here, instead of name="Vida"
@@ -76,18 +129,34 @@ welcomeMessage('Welcome to my increasing-splits tester')
 name = input('What is your name? ')
 
 flag = True
-welcomeMessage(name + ' welcome to my increasing-splits tester')
+welcomeMessage(name + ', welcome to my increasing-splits tester')
 
 while flag:
     question = input(name + ", would you like to test if a number admits an increasing-split of given size? ")
     question = (question.strip()).lower()
-    
-    if question == 'no':
-        flag = False
-        welcomeMessage('Goodbye ' + name)
+
+    if question != 'yes' and question != 'no':
+        no = True
+        
+        while no:
+            if question == 'yes':
+                no = False
+                print('Good choice')
+                ansYes()
+            
+            elif question == 'no':
+                no = False
+                flag = False
+            
+            else:
+                question = input('Please input yes or no: ')
+                no = True
 
     elif question == 'yes':
-        pass
-
+        print('Good choice!')
+        ansYes()
+       
     else:
-        ''
+        flag = False
+
+welcomeMessage('Goodbye ' + name)
