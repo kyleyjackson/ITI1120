@@ -184,5 +184,171 @@ def casual_number(s):
             i += 1
     
     return val
-                
-print(casual_number('1,241'))
+
+
+# 2.6
+def alienNumbers(s):
+    '''
+    (string) => int
+    
+    Takes a string s and returns the sum of the value represented by the following characters
+        > T => 1024
+        > y => 598
+        > ! => 121
+        > a => 42
+        > N => 6
+        > U => 1
+
+    Precondition: s contains no characters outside the specified set
+    '''
+
+    return sum(1024 * (i == 'T') + 598 * (i == 'y') + 121 * (i == '!') + 42 * (i == 'a') + 6 * (i == 'N') + (i == 'U') for i in s)
+
+
+# 2.7
+def alienNumbersAgain(s):
+    '''
+    (string) => int
+    
+    Takes a string s and returns the sum of the value represented by the following characters
+        > T => 1024
+        > y => 598
+        > ! => 121
+        > a => 42
+        > N => 6
+        > U => 2
+
+    Precondition: s contains no characters outside the specified set
+    '''
+
+    sum = 0
+    i = 0
+
+    while i < len(s):
+        if s[i] == 'T':
+            sum += 1024
+        
+        elif s[i] == 'y':
+            sum += 598
+
+        elif s[i] == '!':
+            sum += 121
+
+        elif s[i] == 'a':
+            sum += 42
+        
+        elif s[i] == 'N':
+            sum += 6
+        
+        elif s[i] == 'U':
+            sum += 2
+        
+        i += 1
+    
+    return sum
+
+
+# 2.8
+def encrypt(s):
+    '''
+    (string) => string
+    
+    Takes a string s and returns it altered in the following manner
+        > Firstly, reverses the string
+        > Then the first and last become first and second, then second and second last become third and fourth and so on
+    '''
+
+    
+    str = ''
+    i = -1
+    j = 0
+    length = len(s)
+
+    # reverse the string
+    while i >= -length // 2:
+        str +=  s[i] + s[j]
+
+        i -= 1
+        j += 1
+    
+    # fix odd length string issues
+    if length % 2 != 0:
+        return str[0:length]
+    
+    else:
+        return str
+
+    
+# 2.9
+def oPify(s):
+    '''
+    (string) => string
+    
+    Takes a string s and returns it modified according to the following rules
+        > Inserts o and p between every pair of consecutive characters (a => z)
+        > If the first letter in the pair is capitalized, insert O
+        > If the first letter in the pair is lowercase, insert o
+        > If the second letter in the pair is capitalized, insert P
+        > If the second letter in the pair is lowercase, insert p
+        > If len(s) < 2, return s
+    '''
+
+    i = 0
+    op = ''
+    length = len(s)
+
+    while i < length:
+        if i == length - 1: # prevent indexOutOfBounds error
+            op += s[i]
+
+        elif s[i].isalpha():
+            first = ord(s[i]) # using ord() to check if consecutive via character values
+            second = ord(s[i + 1])
+            lower1 = ord(s[i].lower())
+            lower2 = ord(s[i + 1].lower())
+
+            op += s[i]
+
+            if lower2 - lower1 == 1 and second >= 97 and first <= 90: # capital first, lowercase second
+                op += 'Op'
+    
+            elif lower2 - lower1 == 1 and second <= 90 and first <= 90: # capital first, capital second
+                op += 'OP'
+
+            elif lower2 - lower1 == 1 and second <= 90 and first >= 97: # lowercase first, capital second
+                op += 'oP'
+
+            elif lower2 - lower1 == 1 and second >= 97 and first >= 97: # lowercase first, lowercase second
+                op += 'op' 
+
+        else:
+            op += s[i]
+
+        i += 1
+    
+    return op
+        
+
+# 2.10
+def nonrepetitive(s):
+    '''
+    (string) => Boolean
+    
+    Takes a string s and returns True if no substring appears twice in a row
+    '''
+
+    i = 1
+    length = len(s)
+
+    while i <= length // 2:
+        j = 0
+        
+        while j <= length - 2 * i:
+            if s[j:j + i] == s[j + i:j + 2 * i]:
+                return False
+            
+            j += 1
+
+        i += 1
+    
+    return True

@@ -67,20 +67,47 @@ casual_number('1,241')
 1241
 
 
-=== 2.6 ===
+=== 2.6 & 2.7 ===
+alienNumbers('aaaUUU')
+129
 
+alienNumbers('a!ya!U!NaU')
+1095
 
-
-=== 2.7 ===
-
-
+alienNumbers('')
+0 
 
 === 2.8 ===
+encrypt('Hello, world')
+dHlerlolwo ,
 
+encrypt('12345')
+51423
+
+encrypt('Secret Message')
+eSgeacsrseetM
 
 
 === 2.9 ===
+oPify('ABcDef')
+AOPBOpcoPDOpeopf
 
+oPify('abcdef22')
+aopbopcopdopeopf22
+
+oPify('x')
+x
+
+oPify('aBCdef22x')
+aoPBOPCOpdopeopf22x
 
 
 === 2.10 ===
+nonrepetitive('abacab')
+True
+
+nonrepetitive('12311234')
+False
+
+nonrepetitive('zrtzghtghtghtq')
+False
