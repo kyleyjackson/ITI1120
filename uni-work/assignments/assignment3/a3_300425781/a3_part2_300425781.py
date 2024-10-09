@@ -340,10 +340,10 @@ def nonrepetitive(s):
     i = 1
     length = len(s)
 
-    while i <= length // 2:
+    while i <= length // 2: # cover all possible substring lengths
         j = 0
         
-        while j <= length - 2 * i:
+        while j <= length - 2 * i: # iterate through s to check all starting indexes for substrings of the current length i
             if s[j:j + i] == s[j + i:j + 2 * i]:
                 return False
             
