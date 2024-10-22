@@ -104,14 +104,30 @@ def remove_pairs(l):
     ['2♣', '5♢', '6♣', '9♣', 'A♢']
     '''
 
-    no_pairs = []
+    arr = []
+    symbols = []
+    vals = []
 
-    # COMPLETE THE BODY OF THIS FUNCTION ACCORDING TO THE DESCRIPTION ABOVE
-    # YOUR CODE GOES HERE
+    # separate symbols and values
+    for i in l:
+        vals.append(i[0:len(i) - 1])
+        symbols.append(i[len(i) - 1])
+    
+    # deal with values only
+    for i in vals:
+        if i not in arr:
+            arr.append(i)
+        
+        elif i in arr:
+            arr.remove(i)
+    
+    # add symbols
+    for i in range(len(arr)):
+        arr[i] += symbols[vals.index(arr[i])]
 
-    random.shuffle(no_pairs)
+    random.shuffle(arr)
 
-    return no_pairs
+    return arr
 
 
 def print_deck(deck):
@@ -121,8 +137,12 @@ def print_deck(deck):
     Prints elements of a given list deck separated by a space
     '''
 
-    # COMPLETE THE BODY OF THIS FUNCTION ACCORDING TO THE DESCRIPTION ABOVE
-    # YOUR CODE GOES HERE
+    str = ''
+
+    for i in deck:
+        str += i + ' '
+    
+    print(str.strip())
 
     
 def get_valid_input(n):
@@ -135,6 +155,20 @@ def get_valid_input(n):
     Precondition: n >= 1
     '''
 
+    i = input('Please enter an integer between 1 and ' + str(n) + ': ')
+    isInvalid = False
+
+    if not(i.isdigit()) or int(i) < 1 or int(i) > n:
+        isInvalid = True
+
+        while isInvalid:
+            i = input('Invalid input. Please enter an integer between 1 and ' + str(n) + ': ')
+
+            if i.isdigit() and int(i) <= n and int(i) > 0:
+                isInvalid = False
+            
+    return int(i)
+
     
 
 def play_game():
@@ -144,20 +178,21 @@ def play_game():
     This function plays the game
     '''
 
+    # initialize game
     deck = make_deck()
     shuffle_deck(deck)
     tmp = deal_cards(deck)
-
     dealer = tmp[0]
     human = tmp[1]
+    gameOver = False
 
-    print(dealer)
-    print(human)
-
+    # intro dialogue
+    print('============================================')
     print("Hello. My name is Robot and I am the dealer.")
     print("Welcome to my card game!")
-    print("Your current deck of cards is:")
+    print("Your current deck of cards is:\n")
     print_deck(human)
+    print()
     print("Do not worry. I cannot see the order of your cards")
 
     print("Now discard all the pairs from your deck. I will do the same.")
@@ -166,10 +201,107 @@ def play_game():
     dealer = remove_pairs(dealer)
     human = remove_pairs(human)
 
-    # COMPLETE THE play_game function HERE
-    # YOUR CODE GOES HERE
-	
-	 
+    while not(gameOver):
+        # player turn start
+        print('***********************************************************')
+        print('Your turn.\n')
+        print('Your current hand is:\n')
+        print_deck(human)
+        print()
+        print('I have ' + str(len(dealer)) + ' cards.')
+        print('1 will be my first card, and ' + str(len(dealer)) + ' will be my last.')
+        print('Which card would you like?')
+        
+        # grab dealer card
+        picked = get_valid_input(len(dealer))
+        print()
+        
+        # suffix creator
+        if picked == 1:
+            print('You took my 1st card.')
+        
+        elif picked == 2:
+            print('You took my 2nd card.')
+        
+        elif picked == 3:
+            print('You took my 3rd card.')
+        
+        else:
+            print('You took my ' + str(picked) + 'th card.')
+        
+        # remove card
+        print('It is a ' + dealer[picked - 1] + '\n')
+
+        human.append(dealer[picked - 1])
+        dealer.pop(picked - 1)
+
+        print('With the ' + human[len(human) - 1] + ' added, your hand is now: \n')
+        print_deck(human)
+        print()
+        
+        # shuffle and remove pairs
+        human = remove_pairs(human)
+
+        print('After shuffling and removing pairs, your hand is now: \n')
+        print_deck(human)
+
+        wait_for_player()
+        
+        # check if someone won
+        if len(dealer) == 0:
+            print('***********************************************************')
+            print('Oh! I\'m out of cards!')
+            print('I win! Better luck next time!')
+
+            return
+        
+        elif len(human) == 0:
+            print('***********************************************************')
+            print('Oh... you\'re out of cards!')
+            print('You win! Congratulations!')
+
+            return
+
+        # robot turn start
+        print('***********************************************************')
+        print('My turn.\n')
+        
+        # remove card
+        randInt = random.randint(1, len(human))
+        dealer.append(human[randInt - 1])
+        human.pop(randInt - 1)
+
+        # suffix creator
+        if randInt == 1:
+            print('I took your 1st card.')
+        
+        elif randInt == 2:
+            print('I took your 2nd card.')
+        
+        elif randInt == 3:
+            print('I took your 3rd card.')
+        
+        else:
+            print('I took your ' + str(randInt) + 'th card.')
+        
+        # shuffle and remove pairs
+        dealer = remove_pairs(dealer)
+        wait_for_player()
+        
+        # check if someone won
+        if len(dealer) == 0:
+            print('***********************************************************')
+            print('Oh! I\'m out of cards!')
+            print('I win! Better luck next time!')
+
+            gameOver = True
+        
+        elif len(human) == 0:
+            print('***********************************************************')
+            print('Oh... you\'re out of cards!')
+            print('You win! Congratulations!')
+
+            gameOver = True
 
 # main
 play_game()
