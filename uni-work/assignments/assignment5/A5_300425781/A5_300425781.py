@@ -1,5 +1,50 @@
 import random
 
+def isort(arr):
+    '''
+    (str[]) => int[]
+    
+    Returns a sorted version of the unsorted arr
+
+    Precondition: arr is a list of strings that represent numbers
+    '''
+
+    if len(arr) <= 1: # if length of 0 or 1, array is sorted by default
+        return arr
+    
+    for i in range(len(arr)): # make str to int
+        arr[i] = int(arr[i])
+
+    for i in range(1, len(arr)):
+        c = arr[i]
+        j = i - 1
+
+        while j >= 0 and c < arr[j]:
+            arr[j + 1] = arr[j]
+            j = j - 1
+        
+        arr[j + 1] = c
+    
+    return arr
+
+
+def uniqueNums(arr):
+    '''
+    (list[]) => int[]
+    
+    Returns a sorted list of integers containing all unique values of arr
+    '''
+
+    u = []
+
+    for i in arr:
+        for j in i:
+            if j not in u:
+                u.append(j)
+    
+    return isort(u)
+
+
 def create_network(file_name):
     '''(str)->list of tuples where each tuple has 2 elements the first is int and the second is list of int
 
@@ -14,12 +59,42 @@ def create_network(file_name):
     Returns the 2D list representing the frendship nework as described above
     where the network is sorted by the ID and each list of int (in a tuple) is sorted (i.e. each list of friens is sorted).
     '''
+
     friends = open(file_name).read().splitlines()
-    network=[]
+    temp = []
+    network = []
+    users = []
+    unique = []
 
     # YOUR CODE GOES HERE
+    for user in friends:
+        user = user.split(' ')
+        
+        # separate number of users and actual users
+        temp.append(user)
+        users = temp[1:]
+
+        # grab all unique users
+        unique = uniqueNums(users)
+        
+        # format all users
+
+    for user1 in unique: # iterate through each user
+        temp2 = []
+        
+        for duo in users: # each group in users
+            if str(user1) == duo[0]:  # user is in the first position
+                if duo[1] != str(user1):  # self referencing prevention
+                    temp2.append(duo[1])
+            elif str(user1) == duo[1]:  # user is in the second position
+                if duo[0] != str(user1):
+                    temp2.append(duo[0])
+
+        temp2 = isort(temp2)
+        network.append((str(user1), temp2))
     
     return network
+
 
 def getCommonFriends(user1, user2, network):
     '''(int, int, 2D list) ->list
@@ -27,11 +102,23 @@ def getCommonFriends(user1, user2, network):
     and friends of user 1 and user 2 sorted 
     Given a 2D-list for friendship network, returns the sorted list of common friends of user1 and user2
     '''
-    common=[]
-    
-    # YOUR CODE GOES HERE
 
-    return common
+    common = []
+     
+    # YOUR CODE GOES HERE
+    for user in network: # grab all friends of each user
+        if user[0] == str(user1) or user[0] == str(user2):
+            for friend in user[1]:
+                common.append(friend)
+
+    common = isort(common)
+    common1 = []
+
+    for i in range(len(common) - 1):
+        if common[i] == common[i + 1]:
+            common1.append(common[i])
+
+    return common1
 
     
 def recommend(user, network):
@@ -47,8 +134,6 @@ def recommend(user, network):
 
     # YOUR CODE GOES HERE
     pass
-
-    
 
 
 def k_or_more_friends(network, k):
@@ -132,6 +217,8 @@ def get_uid(network):
 ##############################
 # main
 ##############################
+
+
 
 # NOTHING FOLLOWING THIS LINE CAN BE REMOVED or MODIFIED
 
