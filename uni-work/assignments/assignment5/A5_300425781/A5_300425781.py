@@ -1,5 +1,6 @@
 import random
 
+# HELPER FUNCTIONS
 def isort(arr):
     '''
     (str[]) => int[]
@@ -12,18 +13,18 @@ def isort(arr):
     if len(arr) <= 1: # if length of 0 or 1, array is sorted by default
         return arr
     
-    for i in range(len(arr)): # make str to int
+    for i in range(len(arr)): 
         arr[i] = int(arr[i])
 
     for i in range(1, len(arr)):
         c = arr[i]
         j = i - 1
 
-        while j >= 0 and c < arr[j]:
+        while j >= 0 and c < arr[j]: # keep moving elements greater than c up in indecies
             arr[j + 1] = arr[j]
             j = j - 1
         
-        arr[j + 1] = c
+        arr[j + 1] = c # insert
     
     return arr
 
@@ -44,6 +45,7 @@ def uniqueNums(arr):
     
     return isort(u)
 
+# END OF HELPER FUNCTIONS
 
 def create_network(file_name):
     '''(str)->list of tuples where each tuple has 2 elements the first is int and the second is list of int
@@ -91,7 +93,7 @@ def create_network(file_name):
                     temp2.append(duo[0])
 
         temp2 = isort(temp2)
-        network.append((str(user1), temp2))
+        network.append((user1, temp2))
     
     return network
 
@@ -104,10 +106,12 @@ def getCommonFriends(user1, user2, network):
     '''
 
     common = []
+    user1 = int(user1)
+    user2 = int(user2)
      
     # YOUR CODE GOES HERE
     for user in network: # grab all friends of each user
-        if user[0] == str(user1) or user[0] == str(user2):
+        if user[0] == user1 or user[0] == user2:
             for friend in user[1]:
                 common.append(friend)
 
@@ -116,7 +120,7 @@ def getCommonFriends(user1, user2, network):
 
     for i in range(len(common) - 1):
         if common[i] == common[i + 1]:
-            common1.append(common[i])
+            common1.append(int(common[i]))
 
     return common1
 
@@ -133,8 +137,18 @@ def recommend(user, network):
     return the one with the smallest ID. '''
 
     # YOUR CODE GOES HERE
-    pass
+    common = 0
+    id0 = None
+    user = int(user)
 
+    for user0 in network: # iterate through users
+        common0 = len(getCommonFriends(user, user0[0], network))
+
+        if common < common0 and user not in user0[1]:
+            common = common0
+            id0 = user0[0]
+    
+    return id0
 
 def k_or_more_friends(network, k):
     '''(2Dlist,int)->int
@@ -142,7 +156,16 @@ def k_or_more_friends(network, k):
     returns the number of users who have at least k friends in the network
     Precondition: k is non-negative'''
     # YOUR CODE GOES HERE
-    pass
+
+    counter = 0 # number of users to return
+    
+    for user in network: # for each user
+        length = len(user[1]) # get number of friends
+
+        if length >= k:
+            counter = counter + 1
+    
+    return counter
  
 
 def maximum_num_friends(network):
@@ -151,15 +174,27 @@ def maximum_num_friends(network):
     returns the maximum number of friends any user in the network has.
     '''
     # YOUR CODE GOES HERE
-    pass
+    max0 = 0
+
+    for user in network: 
+        max0 = max(max0, len(user[1]))
+    
+    return max0
     
 
 def people_with_most_friends(network):
     '''(2Dlist)->1D list
     Given a 2D-list for friendship network, returns a list of people (IDs) who have the most friends in network.'''
-    max_friends=[]
+    max_friends = []
+
     # YOUR CODE GOES HERE
-    return    max_friends
+    maxFriends = maximum_num_friends(network) # get the max number of friends
+
+    for user in network: # check if each user has maxFriends amount of friends
+        if len(user[1]) == maxFriends:
+            max_friends.append(int(user[0]))
+
+    return max_friends
 
 
 def average_num_friends(network):
@@ -167,7 +202,12 @@ def average_num_friends(network):
     Returns an average number of friends overs all users in the network'''
 
     # YOUR CODE GOES HERE
-    pass
+    sumFriends = 0
+
+    for user in network: # get sum of all friends
+        sumFriends = sumFriends + len(user[1])
+    
+    return sumFriends / len(network)
     
 
 def knows_everyone(network):
@@ -177,7 +217,11 @@ def knows_everyone(network):
     and False otherwise'''
     
     # YOUR CODE GOES HERE
-    pass
+    for user in network:
+        if len(user[1]) == (len(network) - 1):
+            return True
+    
+    return False
 
 
 ####### CHATTING WITH USER CODE:
@@ -211,8 +255,26 @@ def get_uid(network):
     until it succeeds. Then it returns it'''
     
     # YOUR CODE GOES HERE
-    pass
+    invalid = True
+    id0 = input('Please enter an integer for a user ID: ')
+    id0 = id0.strip()
+    users = []
+
+    for user in network:
+        users.append(str(user[0]))
+
+    if id0 in users:
+        return id0
     
+    else:
+        while invalid:
+            id0 = input('There is no user with the ID \'' + id0 + '\' Please try again: ')
+
+            if id0 in users:
+                invalid = False
+            
+    
+    return int(id0)
 
 ##############################
 # main
