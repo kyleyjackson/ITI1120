@@ -19,6 +19,8 @@ def element_uniqueness(L):
     >>> element_uniqueness([10,-1])
     True
     '''
+    
+    return len(set(L)) == len(L)
 
 # QUESTION 2
 
@@ -43,6 +45,21 @@ def one_unique_at_least(L):
     True
     '''
 
+    L.sort()
+    i = 0
+
+    while i < len(L):
+        if (i == 0 or L[i] != L[i - 1]) and (i == len(L) - 1 or L[i] != L[i + 1]):
+            return True
+        
+        while i < len(L) - 1 and L[i] == L[i + 1]:
+            i = i + 1
+
+        i = i + 1
+    
+    return False
+
+
 # QUESTION 3
     
 def all_unique(L):
@@ -63,6 +80,20 @@ def all_unique(L):
     >>> all_unique([10,-1])
     [-1,10]
     '''
+    L.sort()
+    i = 0
+    arr = []
+
+    while i < len(L):
+        if (i == 0 or L[i] != L[i - 1]) and (i == len(L) - 1 or L[i] != L[i + 1]):
+            arr.append(L[i])
+        
+        while i < len(L) - 1 and L[i] == L[i + 1]:
+            i = i + 1
+
+        i = i + 1
+
+    return arr
 
 
 # QUESTION 1 again
@@ -71,12 +102,16 @@ def element_uniqueness_v2(L):
     # make now a 2nd solution to element_uniqueness
     # by making a call to all_unique
 
+    return len(all_unique(L)) == len(L)
+
 
 # QUESTION 2 again
 
 def one_unique_at_least_v2(L):
     # make now a 2nd solution to one_unique_at_least_v2
     # by making a call to all_unique
+
+    return len(all_unique(L)) != 0
 
 # QUESTION 4
 
@@ -100,6 +135,7 @@ def count_unique(L):
     2
     '''
 
+    return len(all_unique(L))
 
 # QUESTION 5                               
 
@@ -123,6 +159,8 @@ def duplicates(L):
     False
     '''
 
+    return len(all_unique(L)) < len(L)
+
 # QUESTION 6
 
 def majority(L):
@@ -141,3 +179,15 @@ def majority(L):
     8
     '''
 
+    if len(L) == 0:
+        return
+    
+    L.sort()
+    maj = L[len(L) // 2]
+    
+    counter = sum(1 for n in L if n == maj)
+
+    if counter > len(L) // 2:
+        return maj
+
+    return 
