@@ -1,0 +1,7 @@
+Part 1
+
+string.translate() and str.maketrans()
+https://www.w3schools.com/python/ref_string_translate.asp
+
+Defaultdict
+https://www.geeksforgeeks.org/defaultdict-in-python/
