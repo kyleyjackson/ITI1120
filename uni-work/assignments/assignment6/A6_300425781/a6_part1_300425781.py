@@ -1,5 +1,4 @@
 import string
-from collections import Counter
 
 def open_file():
     '''None->file object
@@ -39,7 +38,7 @@ def read_file(fp):
         words = quote.split() # 2
 
         for word in words:
-            if len(word) >= 3:
+            if len(word) >= 2:
                 if word in dict0 and word.isalpha() and line not in dict0[word]: # 6
                     dict0[word].add(line)
                 
@@ -61,15 +60,25 @@ def find_coexistance(D, query):
 
     for item in queries:
         arr.append(D.get(item))
-
+    
     if None in arr: # if the string does not exist
         return [-1]
     
+    arr0 = []
+
+    for set0 in arr:
+        for i in set0:
+            arr0.append(i)
+    
+    if len(arr0) == len(removeDuplicates(arr0)) and len(arr) > 1: # if the queries don't coexist on the same line
+        return [-2]
+    
     elif len(arr) == 1:
-        return list(D[query])
+        return isort(list(D[query]))
     
     else:
-        return setsToFormattedList(arr)
+        arr0 = formatList(arr0)
+        return isort(arr0)
 
 
 #*HELPERS
@@ -111,22 +120,22 @@ def cleanUp(s):
     return s.translate(str.maketrans('', '', removeables))
     
 
-def setsToFormattedList(arr):
+def formatList(arr):
     '''
-    (set[]) => int[]
+    (int[]) => int[]
     
-    Takes a list of sets and returns a list following these steps:
+    Formats a list following the steps below
         > All non duplicates are removed
         > Then the duplicate elements are removed until one copy of each is left
-    
-    Precondition: Each set in arr is a set of only integer values
     '''
+    
+    arr1 = list(arr)
 
-    arr0 = []
-
-    for set0 in arr:
-        for i in set0:
-            arr0.append(i)
+    for line in arr:
+        if arr.count(line) <= 1:
+            arr1.remove(line)
+    
+    return removeDuplicates(arr1)
 
 
 def invalidWord(s, dict0):
@@ -141,6 +150,10 @@ def invalidWord(s, dict0):
     for i in range(len(arr)):
         if arr[i] not in dict0:
             return arr[i]
+
+
+def removeDuplicates(arr):
+    return list(dict.fromkeys(arr))
 
 
 ##############################
@@ -164,8 +177,11 @@ while continued:
         if indecies == [-1] or cleanUp(query) == '':
             print('The word \'' + invalidWord(query, d) + '\' is not in the file.')
         
+        elif indecies == [-2]:
+            print('The words you have specified do not coexist on the same line.')
+        
         else:
-            print('The word(s) you entered coexist in the following lines of the file:')
+            print('The word(s) you entered coexist in the following line(s) of the file:')
             str0 = ''
 
             for i in indecies:
